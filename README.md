@@ -48,19 +48,19 @@ monitoring/           ← Evidently AI drift detection + Streamlit dashboard
 
 ---
 
-## 📊 Model Results
+##  Model Results
 
 | Model | Accuracy | AUC | Avg Latency | Size |
 |-------|----------|-----|-------------|------|
-| **ResNet50** ⭐ | **84%** | **0.91** | 42ms | 98MB |
+| **ResNet50**  | **84%** | **0.91** | 42ms | 98MB |
 | EfficientNet-B0 | 81% | 0.88 | 32ms | 21MB |
 | MobileNetV3 | 77% | 0.84 | 18ms | 6MB |
 
-All models achieve **sub-100ms per-frame latency** ✅
+All models achieve **sub-100ms per-frame latency** 
 
 ---
 
-## 🚨 Vehicle Diagnostics System
+##  Vehicle Diagnostics System
 
 Beyond dashcam detection, this project includes a real-time vehicle health monitoring system:
 
@@ -83,7 +83,7 @@ diag.process_reading(SensorReading(SystemComponent.FUEL, 1.5, "bar"))
 
 ---
 
-## 🧪 Test Suite - 63 Tests Passing
+##  Test Suite - 63 Tests Passing
 tests/
 ├── test_api.py          # FastAPI endpoint tests
 ├── test_model.py        # CNN model shape/output tests
