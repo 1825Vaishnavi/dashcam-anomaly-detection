@@ -5,7 +5,8 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.6-red)
 ![Tests](https://img.shields.io/badge/Tests-63%20passing-green)
 
-> Real-time computer vision pipeline for classifying road anomalies from dashcam footage + vehicle health monitoring system — built for production vehicle safety systems.
+> Real-time computer vision pipeline for classifying road anomalies from dashcam footage + vehicle health monitoring system -
+- built for production vehicle safety systems.
 
 ---
 
