@@ -27,6 +27,8 @@ from schemas import (
     HealthResponse, ModelInfoResponse,
 )
 
+_batch_predict = batch_predict
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -124,18 +126,20 @@ async def predict_upload(
 @app.post("/batch_predict",
           response_model=BatchPredictResponse, tags=["Inference"])
 async def batch_predict_endpoint(req: BatchPredictRequest):
-    if req.architecture not in MODELS:
-        raise HTTPException(400, f"Architecture '{req.architecture}' not available.")
     import base64, io
     from PIL import Image
+    if req.architecture not in MODELS:
+        raise HTTPException(400, f"Architecture '{req.architecture}' not available.")
     frames = []
     for b64 in req.images_base64:
         raw = base64.b64decode(b64)
         pil = Image.open(io.BytesIO(raw)).convert("RGB")
         frames.append(np.array(pil)[:, :, ::-1])
     try:
-        results = batch_predict(MODELS[req.architecture],
-                                frames, req.confidence_threshold)
+        results = _batch_predict(
+            MODELS[req.architecture],
+            frames,
+            req.confidence_threshold)
     except Exception as e:
         raise HTTPException(500, str(e))
     items = [
